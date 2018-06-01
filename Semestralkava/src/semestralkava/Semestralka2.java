@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author Jindra
  */
-public class Semestralkava extends Application {
+public class Semestralka2 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
