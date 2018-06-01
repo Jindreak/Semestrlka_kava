@@ -13,16 +13,16 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="semestralkava.FXMLDocumentController">
    <children>
       <VBox layoutX="20.0" layoutY="26.0" prefHeight="352.0" prefWidth="246.0">
          <children>
-            <ListView prefHeight="353.0" prefWidth="246.0" />
+            <ListView fx:id="kavaListView" prefHeight="353.0" prefWidth="246.0" />
          </children>
       </VBox>
       <FlowPane layoutX="300.0" layoutY="26.0" prefHeight="213.0" prefWidth="246.0">
          <children>
-            <TextArea prefHeight="212.0" prefWidth="247.0" />
+            <TextArea editable="false" prefHeight="212.0" prefWidth="247.0" />
          </children></FlowPane>
       <GridPane layoutX="300.0" layoutY="239.0" prefHeight="137.0" prefWidth="246.0">
         <columnConstraints>
@@ -42,7 +42,7 @@
             <Button mnemonicParsing="false" text="Odeber Kávu" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" text="Přidej Kavárnu" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" text="Odeber Kavárnu" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Ohodnoť" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="ohodnot" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Ohodnoť" onAction="#handleZkouska1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <ImageView fitHeight="45.0" fitWidth="46.0">
                <image>
                   <Image url="@img/gold-star-graphic.jpg" />
@@ -50,22 +50,22 @@
             </ImageView>
             <ImageView fitHeight="45.0" fitWidth="46.0" GridPane.columnIndex="1">
                <image>
-                  <Image url="@../../img/gold-star-graphic.jpg" />
+                  <Image url="@img/gold-star-graphic.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="45.0" fitWidth="46.0" GridPane.columnIndex="2">
                <image>
-                  <Image url="@../../img/gold-star-graphic.jpg" />
+                  <Image url="@img/gold-star-graphic.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="47.0" fitWidth="48.0" GridPane.columnIndex="3">
                <image>
-                  <Image url="@../../img/grey-star-graphic.jpg" />
+                  <Image url="@img/grey-star-graphic.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="48.0" fitWidth="49.0" GridPane.columnIndex="4">
                <image>
-                  <Image url="@../../img/grey-star-graphic.jpg" />
+                  <Image url="@img/grey-star-graphic.jpg" />
                </image>
             </ImageView>
          </children>
