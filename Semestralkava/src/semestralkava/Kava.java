@@ -19,5 +19,12 @@ public Kava (String nazev, String popis){
     Nazev = nazev;
     Popis = popis;
 }
+
+@Override
+public String toString (){
+    
+    return Nazev + " - " + Popis;
+    
+  }
     
 }

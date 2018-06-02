@@ -47,9 +47,11 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         SeznamKav.pridejKavu(kava1);
         SeznamKav.pridejKavu(kava2);
         SeznamKav.pridejKavu(kava3);
+        
     }    
     
 }

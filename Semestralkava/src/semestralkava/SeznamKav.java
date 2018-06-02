@@ -17,7 +17,9 @@ public class SeznamKav {
     private ObservableList<Kava> kavy = FXCollections.observableArrayList();
     
     public ObservableList<Kava> getSeznamKav (){
+        
         return kavy;
+        
     }
     
 
