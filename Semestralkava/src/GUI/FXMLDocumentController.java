@@ -8,41 +8,67 @@ package GUI;
 import util.SeznamKav;
 import util.Kava;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextArea;
 
 /**
- *
+ *  Hlavni kontrolni trida pro zakreslovani do GUI
  * @author Jindra
  */
 public class FXMLDocumentController implements Initializable {
     
-    //SeznamKav SeznamKav = new SeznamKav();
-   // Kava kava1 = new Kava("Kava1","Dobra");
-  //  Kava kava2 = new Kava("Kava2","Lepsi");
-  //  Kava kava3 = new Kava("Kava3", "Nejlepsi");
-    //smazat----
-    Random rand = new Random();
+    //Graficke komponenty, na ktere budeme chtit sahat (menit)
+    
+    @FXML
+    private Label labelNazevKavy;
       
     @FXML
-    private ListView<Kava> kavaListView;
-    
-
+    private Label labelZemePuvodu;
     
     @FXML
-    private void handleZkouska1(ActionEvent event) {
-       
-       //kavy.add("Kava"+rand.nextInt(50));
-    //   kavaListView.setItems(SeznamKav.getSeznamKav());
-       
-    }
+    private Label labelPrumerneHodnoceni;
+    
+    
+    
+    @FXML
+    private TextArea popisArea;
+    
+    @FXML
+    private ListView listKavarny;
+    
+    @FXML
+    private ListView listKavy;
+    
+    
+    
+    @FXML
+    private TableColumn tableHodnoceniDatum;
+    
+    @FXML
+    private TableColumn tableHodnoceniHodnoceni;
+    
+    @FXML
+    private Button buttonNewShop;
+    
+    
+    
+    @FXML
+    private Button buttonNewCoffee;
+    
+    @FXML
+    private Button buttonRemoveCoffee;
+    
+    @FXML
+    private Button buttonRating;
     
     
     
@@ -50,9 +76,6 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-     //   SeznamKav.pridejKavu(kava1);
-    //    SeznamKav.pridejKavu(kava2);
-     //   SeznamKav.pridejKavu(kava3);
         
     }    
     
