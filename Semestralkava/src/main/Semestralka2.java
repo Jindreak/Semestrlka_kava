@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import util.HandlerKavaDetail;
+import util.HandlerSeznamKav;
 
 /**
  *
@@ -29,7 +31,10 @@ public class Semestralka2 extends Application {
 
         MainWindowController mainController = loader.getController();
         
-        mainController.something("delate si ze me prdel");
+        fakeClass fakeClass = new fakeClass();
+        
+        HandlerKavaDetail handlerDetail = new HandlerKavaDetail(mainController, fakeClass.getSeznamKav().getSeznam());
+        HandlerSeznamKav handleSeznam = new HandlerSeznamKav(fakeClass.getSeznamKav().getSeznam(), mainController.getListKavy(),handlerDetail);
 
         Scene scene = new Scene(root);
 

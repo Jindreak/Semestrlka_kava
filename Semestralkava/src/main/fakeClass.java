@@ -5,6 +5,7 @@
  */
 package main;
 
+import util.Hodnoceni;
 import util.Kava;
 import util.Kavarna;
 import util.SeznamKav;
@@ -34,6 +35,12 @@ public class fakeClass {
         
         seznamKavaren.pridejKavarnu(kavarna1);
         seznamKavaren.pridejKavarnu(kavarna2);
+        
+        kava1.addHodnoceni(new Hodnoceni(4));
+        kava1.addHodnoceni(new Hodnoceni(3));
+        
+        kava1.addKavarnu(kavarna1);
+        kava1.addKavarnu(kavarna2);                
     }
     
     public SeznamKavaren getSeznamKavaren(){

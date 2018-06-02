@@ -23,17 +23,17 @@
    <children>
       <ToolBar id="toolbar" prefHeight="40.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
         <items>
-          <Button id="buttonNewShop" mnemonicParsing="false" text="Vložit kavárnu">
+          <Button id="buttonNewShop" fx:id="buttonNewShop" mnemonicParsing="false" text="Vložit kavárnu">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button id="buttonNewCoffee" mnemonicParsing="false" text="Vložit kávu">
+            <Button id="buttonNewCoffee" fx:id="buttonNewCoffee" mnemonicParsing="false" text="Vložit kávu">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button id="buttonRemoveCoffee" mnemonicParsing="false" text="Odebrat kávu">
+            <Button id="buttonRemoveCoffee" fx:id="buttonRemoveCoffee" mnemonicParsing="false" text="Odebrat kávu">
                <font>
                   <Font size="15.0" />
                </font>
@@ -55,7 +55,7 @@
                      </font>
                   </Label>
                   <Separator id="leftSeparator" prefWidth="200.0" />
-                  <ListView id="listKavy" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                  <ListView id="listKavy" fx:id="listKavy" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
             <VBox id="rightBox" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
@@ -96,17 +96,17 @@
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Label>
-                              <Label id="coffeeNameLabel" text="ZDE BUDE JMÉNO KÁVY" GridPane.columnIndex="1">
+                              <Label id="coffeeNameLabel" fx:id="labelCoffeeName" text="ZDE BUDE JMÉNO KÁVY" GridPane.columnIndex="1">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label id="countryLabel" text="ZDE BUDE ZEMĚ PŮVODU" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Label id="countryLabel" fx:id="labelCountryOrigin" text="ZDE BUDE ZEMĚ PŮVODU" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label id="countryLabel" text="XX / 10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <Label id="countryLabel" fx:id="labelAvgRating" text="XX / 10" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -124,7 +124,7 @@
                            <children>
                               <ImageView id="coffeeImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../AppData/Local/Temp/Rar$DRa13468.35599/Semestrlka_kava-master/Semestralkava/src/semestralkava/img/coffee4.jpg" />
+                                    <Image url="@../semestralkava/img/coffee2.jpg" />
                                  </image>
                               </ImageView>
                               <TextArea id="popisArea" fx:id="popisTextArea" editable="false" text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. In rutrum. Proin in tellus sit amet nibh dignissim sagittis. Etiam quis quam. Nullam rhoncus aliquam metus. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. In rutrum. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Mauris elementum mauris vitae tortor.Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Mauris metus. Fusce consectetuer risus a nunc. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Etiam commodo dui eget wisi. Aliquam ornare wisi eu metus. Donec iaculis gravida nulla. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Integer malesuada. Phasellus faucibus molestie nisl. Duis pulvinar. Donec vitae arcu. Vivamus ac leo pretium faucibus. Donec vitae arcu. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor." wrapText="true" HBox.hgrow="ALWAYS" />
@@ -137,7 +137,7 @@
                         <Font size="15.0" />
                      </font>
                      <content>
-                        <ListView id="listKavarny" prefHeight="200.0" />
+                        <ListView id="listKavarny" fx:id="listAvailableIn" prefHeight="200.0" />
                      </content>
                   </TitledPane>
                   <TitledPane id="hodnoceniPane" text="Hodnocení" VBox.vgrow="ALWAYS">
@@ -145,10 +145,10 @@
                         <Font size="15.0" />
                      </font>
                      <content>
-                        <TableView id="tableHodnoceni" prefHeight="150.0">
+                        <TableView id="tableHodnoceni" fx:id="tableRatings" prefHeight="150.0">
                            <columns>
-                              <TableColumn id="columnDate" prefWidth="75.0" text="Datum" />
-                              <TableColumn id="columnHodnoceni" prefWidth="75.0" text="Hodnocení" />
+                              <TableColumn id="columnDate" fx:id="collDate" prefWidth="75.0" text="Datum" />
+                              <TableColumn id="columnHodnoceni" fx:id="collRating" prefWidth="75.0" text="Hodnocení" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

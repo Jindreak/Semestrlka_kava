@@ -20,6 +20,7 @@ public class Kava {
     private final int id;
     private final String zemePuvodu;
     private List<Hodnoceni> hodnoceni;
+    private List<Kavarna> dostupnost;
 
     public Kava(int id, String nazev, String popis, String zemePuvodu) {
 
@@ -28,7 +29,7 @@ public class Kava {
         this.id = id;
         this.zemePuvodu = zemePuvodu;
         this.hodnoceni = new ArrayList<>();
-
+        this.dostupnost = new ArrayList<>();
     }
 
     /**
@@ -103,7 +104,26 @@ public class Kava {
         return hodnoceni;
     }
     
+    public void addKavarnu(Kavarna kavarna){
+        this.dostupnost.add(kavarna);
+    }
     
+    public List<Kavarna> getDostupnost(){
+        return dostupnost;
+    }
+    
+    public void addHodnoceni(Hodnoceni hodnoceni){
+        this.hodnoceni.add(hodnoceni);
+    }
+    
+    public float getHodnoceniAvg(){
+        float avg = 0;
+        for(Hodnoceni rating : this.hodnoceni){
+            avg = avg + rating.getHodnoceni();
+        }
+        avg = avg / this.hodnoceni.size();
+        return avg;
+    }
 
     @Override
     public int hashCode() {
