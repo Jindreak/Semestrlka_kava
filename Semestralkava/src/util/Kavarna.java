@@ -42,6 +42,10 @@ public class Kavarna {
         
     }
     
+    public String getDlouhyNazev(){
+        return id + " " +  toString();
+    }
+    
     /**
      * Prevadi Kavarnu do plain textu
      * @return Stringova podoba kavarny

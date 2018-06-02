@@ -28,13 +28,15 @@ public class Semestralka2 extends Application {
         Parent root = loader.load();
 
         fakeClass fakeClass = new fakeClass();
-
+        
         MainWindowController mainController = loader.getController();
 
         HandlerKavaDetail handlerDetail = new HandlerKavaDetail(mainController, fakeClass.getSeznamKav().getSeznam());
         HandlerSeznamKav handleSeznam = new HandlerSeznamKav(fakeClass.getSeznamKav().getSeznam(), mainController.getListKavy(), handlerDetail);
         
-        mainController.init(fakeClass.getSeznamKavaren(),handlerDetail);
+        fakeClass.getSeznamKav().setSeznamKavy(handleSeznam);
+        
+        mainController.init(fakeClass.getSeznamKavaren(),handlerDetail, fakeClass.getSeznamKav());
         
         Scene scene = new Scene(root);
 

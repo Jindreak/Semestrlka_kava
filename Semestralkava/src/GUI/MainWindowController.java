@@ -123,9 +123,9 @@ public class MainWindowController implements Initializable {
 
     }
 
-    public void init(SeznamKavaren kavarny, HandlerKavaDetail detail) {
+    public void init(SeznamKavaren kavarny, HandlerKavaDetail detail, SeznamKav kavy) {
         buttonNewShopInit(kavarny);
-        buttonNewCoffeeInit();
+        buttonNewCoffeeInit(kavarny, kavy);
         buttonRatingInit(detail);
     }
 
@@ -189,7 +189,7 @@ public class MainWindowController implements Initializable {
         });
     }
 
-    private void buttonNewCoffeeInit() {
+    private void buttonNewCoffeeInit(SeznamKavaren seznam, SeznamKav kavy) {
 
         buttonNewCoffee.setOnAction((ActionEvent e) -> {
             Stage stage = new Stage();
@@ -208,7 +208,7 @@ public class MainWindowController implements Initializable {
                 if (controller == null) {
                     System.out.println("SHIT");
                 }
-                controller.init(stage);
+                controller.init(stage, seznam, kavy);
 
                 Scene scene = new Scene(root);
                 stage.setTitle("Založ novou kávu");

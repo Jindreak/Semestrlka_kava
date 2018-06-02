@@ -17,7 +17,7 @@ public class Kava {
 
     private String nazev;
     private String popis;
-    private final int id;
+    private int id;
     private final String zemePuvodu;
     private List<Hodnoceni> hodnoceni;
     private List<Kavarna> dostupnost;
@@ -30,6 +30,20 @@ public class Kava {
         this.zemePuvodu = zemePuvodu;
         this.hodnoceni = new ArrayList<>();
         this.dostupnost = new ArrayList<>();
+    }
+    
+    
+    public Kava(String nazev, String popis, String zemePuvodu) {
+
+        this.nazev = nazev;
+        this.popis = popis;        
+        this.zemePuvodu = zemePuvodu;
+        this.hodnoceni = new ArrayList<>();
+        this.dostupnost = new ArrayList<>();
+    }
+    
+    public void setID(int id){
+        this.id = id;
     }
 
     /**

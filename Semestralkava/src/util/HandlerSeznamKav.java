@@ -48,6 +48,9 @@ public class HandlerSeznamKav {
         }
     }
     
-    
+    public void aktualizuj(){
+        data.clear();
+        init();
+    }
 
 }

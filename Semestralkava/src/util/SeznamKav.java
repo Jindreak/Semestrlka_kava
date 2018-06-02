@@ -13,6 +13,8 @@ import java.util.List;
  * @author Jindra
  */
 public class SeznamKav {
+    
+    private HandlerSeznamKav kavy;
 
     private List<Kava> seznam;
 
@@ -22,6 +24,19 @@ public class SeznamKav {
 
     public boolean pridejKavu(Kava nova) {
         return seznam.add(nova);
+    }
+    
+    public void setSeznamKavy (HandlerSeznamKav kavy){
+        this.kavy = kavy;
+    }
+    
+    public void createCoffee(String nazev, String popis, String zemePuvodu, Kavarna kavarna){
+        Kava kava = new Kava(nazev, popis, zemePuvodu);
+        kava.addKavarnu(kavarna);
+        kava.setID(15);
+        pridejKavu(kava);
+        kavy.aktualizuj();
+        System.out.print(kava.toString());
     }
     
     public Kava odeberKavu(int ident){
