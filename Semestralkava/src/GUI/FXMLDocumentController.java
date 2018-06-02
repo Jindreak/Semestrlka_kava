@@ -24,10 +24,10 @@ import javafx.scene.control.ListView;
  */
 public class FXMLDocumentController implements Initializable {
     
-    SeznamKav SeznamKav = new SeznamKav();
-    Kava kava1 = new Kava("Kava1","Dobra");
-    Kava kava2 = new Kava("Kava2","Lepsi");
-    Kava kava3 = new Kava("Kava3", "Nejlepsi");
+    //SeznamKav SeznamKav = new SeznamKav();
+   // Kava kava1 = new Kava("Kava1","Dobra");
+  //  Kava kava2 = new Kava("Kava2","Lepsi");
+  //  Kava kava3 = new Kava("Kava3", "Nejlepsi");
     //smazat----
     Random rand = new Random();
       
@@ -40,7 +40,7 @@ public class FXMLDocumentController implements Initializable {
     private void handleZkouska1(ActionEvent event) {
        
        //kavy.add("Kava"+rand.nextInt(50));
-       kavaListView.setItems(SeznamKav.getSeznamKav());
+    //   kavaListView.setItems(SeznamKav.getSeznamKav());
        
     }
     
@@ -50,9 +50,9 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        SeznamKav.pridejKavu(kava1);
-        SeznamKav.pridejKavu(kava2);
-        SeznamKav.pridejKavu(kava3);
+     //   SeznamKav.pridejKavu(kava1);
+    //    SeznamKav.pridejKavu(kava2);
+     //   SeznamKav.pridejKavu(kava3);
         
     }    
     

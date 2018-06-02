@@ -5,32 +5,43 @@
  */
 package util;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Jindra
  */
 public class SeznamKav {
-    
-    private ObservableList<Kava> kavy = FXCollections.observableArrayList();
-    
-    public ObservableList<Kava> getSeznamKav (){
-        
-        return kavy;
-        
-    }
-    
 
-    
-    public void pridejKavu(Kava k){
-        kavy.add(k);
+    private List<Kava> seznam;
+
+    public SeznamKav() {
+        this.seznam = new ArrayList<Kava>();
+    }
+
+    public boolean pridejKavu(Kava nova) {
+        return (seznam.add(nova));
     }
     
-    public void odeberKavu (Kava k){
-        kavy.remove(k);
+    public Kava odeberKavu(int ident){
+        
+        Kava deleted = null;
+        for (Kava kava : seznam){
+            if(kava.getId() == ident){
+                deleted = kava;
+                seznam.remove(deleted);
+                break;
+            }
+        }
+        return deleted;
+    }
+
+    public List<Kava> getSeznam(){
+        return this.seznam;
     }
     
-    
+    public void init(){
+        //TODO IMPLEMENTACE NACTENI Z DB
+    }
 }
