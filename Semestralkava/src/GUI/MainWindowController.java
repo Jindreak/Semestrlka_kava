@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Cvesspy
+ * @author MarleyWins
  */
 public class MainWindowController implements Initializable {
 
@@ -116,19 +116,38 @@ public class MainWindowController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+    }
+    
+    public void init(){
+        buttonNewShopInit();
+    }
+
+    private void buttonNewShopInit() {
         buttonNewShop.setOnAction((ActionEvent e) -> {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/GUI/dialogNewShop.fxml"));
+
             Parent root;
             try {
                 root = loader.load();
-                Scene scene = new Scene(root);
                 
+                DialogNewShopController controller = loader.getController();
+                if (stage == null) {
+                    System.out.println("FUCK");
+                }
+                if (controller == null) {
+                    System.out.println("SHIT");
+                }
+                controller.init(stage);
+                
+                Scene scene = new Scene(root);
                 stage.setTitle("Založ novou kávu");
                 stage.setScene(scene);
                 stage.show();
+
             } catch (IOException ex) {
                 Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
             }

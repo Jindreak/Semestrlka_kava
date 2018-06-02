@@ -14,7 +14,7 @@ import javafx.scene.input.MouseEvent;
 
 /**
  *
- * @author Cvesspy
+ * @author MarleyWins
  */
 public class HandlerSeznamKav {
 

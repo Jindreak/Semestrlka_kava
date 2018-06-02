@@ -15,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  *
- * @author Cvesspy
+ * @author MarleyWins
  */
 public class HandlerKavaDetail {
     

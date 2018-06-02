@@ -20,7 +20,6 @@ import util.HandlerSeznamKav;
  */
 public class Semestralka2 extends Application {
 
-
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -28,22 +27,22 @@ public class Semestralka2 extends Application {
         loader.setLocation(getClass().getResource("/GUI/mainWindow.fxml"));
         Parent root = loader.load();
 
-        MainWindowController mainController = loader.getController();
-        
         fakeClass fakeClass = new fakeClass();
-        
+
+        MainWindowController mainController = loader.getController();
+        mainController.init();
+
         HandlerKavaDetail handlerDetail = new HandlerKavaDetail(mainController, fakeClass.getSeznamKav().getSeznam());
-        HandlerSeznamKav handleSeznam = new HandlerSeznamKav(fakeClass.getSeznamKav().getSeznam(), mainController.getListKavy(),handlerDetail);
+        HandlerSeznamKav handleSeznam = new HandlerSeznamKav(fakeClass.getSeznamKav().getSeznam(), mainController.getListKavy(), handlerDetail);
 
         Scene scene = new Scene(root);
 
         stage.setTitle("Hodnocení káv");
         stage.setScene(scene);
         stage.show();
-        
-        //mainController.initialize(null, null);
-       // mainController.nahrajKafe();
 
+        //mainController.initialize(null, null);
+        // mainController.nahrajKafe();
     }
 
     /**
