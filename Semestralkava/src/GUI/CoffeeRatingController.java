@@ -26,7 +26,7 @@ import util.Kava;
 /**
  * FXML Controller class
  *
- * @author Cvesspy
+ * @author MarleyWins
  */
 public class CoffeeRatingController implements Initializable {
 

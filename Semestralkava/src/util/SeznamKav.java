@@ -15,6 +15,7 @@ import java.util.List;
 public class SeznamKav {
     
     private HandlerSeznamKav kavy;
+    private int lastIdent = 3;
 
     private List<Kava> seznam;
 
@@ -23,7 +24,12 @@ public class SeznamKav {
     }
 
     public boolean pridejKavu(Kava nova) {
-        return seznam.add(nova);
+        if(seznam.add(nova)){
+            lastIdent++;
+            return true;
+        }else{
+            return false;
+        }
     }
     
     public void setSeznamKavy (HandlerSeznamKav kavy){
@@ -33,7 +39,7 @@ public class SeznamKav {
     public void createCoffee(String nazev, String popis, String zemePuvodu, Kavarna kavarna){
         Kava kava = new Kava(nazev, popis, zemePuvodu);
         kava.addKavarnu(kavarna);
-        kava.setID(15);
+        kava.setID(lastIdent);
         pridejKavu(kava);
         kavy.aktualizuj();
         System.out.print(kava.toString());
