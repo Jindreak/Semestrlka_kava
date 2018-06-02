@@ -5,13 +5,6 @@
  */
 package util;
 
-import java.util.Date;
-
-
-
-
-
-
 /**
  *
  * @author MarleyWins
@@ -19,18 +12,18 @@ import java.util.Date;
 public class Hodnoceni {
     
     private int hodnoceni;
-    private Date datum;
+    private String datum;
     
     public Hodnoceni(int hodnoceni){
         this.hodnoceni = hodnoceni;
-        this.datum = new Date();
+        this.datum = null;
     }
     
-    public void setDatum(Date date){                
+    public void setDatum(String date){                
         datum = date;
     }
     
-    public Date getDatum(){
+    public String getDatum(){
         return datum;
     }
     
