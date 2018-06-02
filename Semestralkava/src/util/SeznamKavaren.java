@@ -5,30 +5,25 @@
  */
 package util;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
 
 /**
- *
+ * Obalovaci trida pro Kavarny - standartni ArrayList
  * @author Jindra
  */
 public class SeznamKavaren {
     
-    private ObservableList<Kavarna> kavarny = FXCollections.observableArrayList();
+    private ArrayList<Kavarna> kavarny = new ArrayList<>();
 
-    public ObservableList<Kavarna> getKavarny() {
+    public ArrayList<Kavarna> getKavarny() {
+        
         return kavarny;
-    }
-    
-    public void pridejKavarnu (Kavarna kav){
-        
-        kavarny.add(kav);
         
     }
     
-    public void odeberKavarnu (Kavarna kav){
+    public boolean pridejKavarnu (Kavarna kav){
         
-        kavarny.remove(kav);
+        return kavarny.add(kav);
         
     }
     
