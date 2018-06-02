@@ -30,6 +30,10 @@ public class HandlerKavaDetail {
         init();
     }
     
+    public Kava getCurrentDetail(){
+        return this.currentDetail;
+    }
+            
     private void init(){
         controller.getLabelCoffeeName().setText("");
         controller.getLabelCountryOrigin().setText("");
@@ -73,6 +77,8 @@ public class HandlerKavaDetail {
         TableView hodnoceniTable = controller.getTableRatings();        
         PropertyValueFactory factory = new PropertyValueFactory("hodnoceni");     
         controller.getCollRating().setCellValueFactory(factory);
+        PropertyValueFactory factory2 = new PropertyValueFactory("datum");
+        controller.getCollDate().setCellValueFactory(factory2);
         hodnoceniTable.setItems(hodnoceni);
     }
 }

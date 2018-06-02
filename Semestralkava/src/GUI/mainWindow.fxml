@@ -33,11 +33,6 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button id="buttonRemoveCoffee" fx:id="buttonRemoveCoffee" mnemonicParsing="false" text="Odebrat kávu">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
             <Button id="buttonRemoveCoffee" fx:id="buttonRating" mnemonicParsing="false" text="Ohodnoť kávu">
                <font>
                   <Font size="15.0" />

@@ -24,6 +24,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import util.HandlerKavaDetail;
+import util.Kava;
 import util.SeznamKav;
 import util.SeznamKavaren;
 
@@ -118,14 +120,44 @@ public class MainWindowController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
-    
-    public void init(SeznamKavaren kavarny){
+
+    public void init(SeznamKavaren kavarny, HandlerKavaDetail detail) {
         buttonNewShopInit(kavarny);
         buttonNewCoffeeInit();
+        buttonRatingInit(detail);
     }
-    
+
+    private void buttonRatingInit(HandlerKavaDetail detail) {
+
+        buttonRating.setOnAction((ActionEvent e) -> {
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/coffeeRating.fxml"));
+
+            Parent root;
+            try {
+
+                root = loader.load();
+
+                CoffeeRatingController controller = loader.getController();
+                controller.init(stage, detail);
+
+                Scene scene = new Scene(root);
+                stage.setTitle("Ohodnoť kávu.");
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (IOException ex) {
+                Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+
+    }
+
     private void buttonNewShopInit(SeznamKavaren kavarny) {
         buttonNewShop.setOnAction((ActionEvent e) -> {
             Stage stage = new Stage();
@@ -136,7 +168,7 @@ public class MainWindowController implements Initializable {
             Parent root;
             try {
                 root = loader.load();
-                
+
                 DialogNewShopController controller = loader.getController();
                 if (stage == null) {
                     System.out.println("FUCK");
@@ -144,8 +176,8 @@ public class MainWindowController implements Initializable {
                 if (controller == null) {
                     System.out.println("SHIT");
                 }
-                controller.init(stage,kavarny);
-                
+                controller.init(stage, kavarny);
+
                 Scene scene = new Scene(root);
                 stage.setTitle("Založ novou kávu");
                 stage.setScene(scene);
@@ -156,10 +188,10 @@ public class MainWindowController implements Initializable {
             }
         });
     }
-    
-    private void buttonNewCoffeeInit(){
-        
-         buttonNewCoffee.setOnAction((ActionEvent e) -> {
+
+    private void buttonNewCoffeeInit() {
+
+        buttonNewCoffee.setOnAction((ActionEvent e) -> {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             FXMLLoader loader = new FXMLLoader();
@@ -168,7 +200,7 @@ public class MainWindowController implements Initializable {
             Parent root;
             try {
                 root = loader.load();
-                
+
                 DialogNewCoffeeController controller = loader.getController();
                 if (stage == null) {
                     System.out.println("FUCK");
@@ -176,8 +208,8 @@ public class MainWindowController implements Initializable {
                 if (controller == null) {
                     System.out.println("SHIT");
                 }
-                controller.init(stage); 
-                
+                controller.init(stage);
+
                 Scene scene = new Scene(root);
                 stage.setTitle("Založ novou kávu");
                 stage.setScene(scene);
@@ -187,7 +219,7 @@ public class MainWindowController implements Initializable {
                 Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        
+
     }
 
 }

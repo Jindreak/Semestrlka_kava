@@ -30,11 +30,12 @@ public class Semestralka2 extends Application {
         fakeClass fakeClass = new fakeClass();
 
         MainWindowController mainController = loader.getController();
-        mainController.init(fakeClass.getSeznamKavaren());
 
         HandlerKavaDetail handlerDetail = new HandlerKavaDetail(mainController, fakeClass.getSeznamKav().getSeznam());
         HandlerSeznamKav handleSeznam = new HandlerSeznamKav(fakeClass.getSeznamKav().getSeznam(), mainController.getListKavy(), handlerDetail);
-
+        
+        mainController.init(fakeClass.getSeznamKavaren(),handlerDetail);
+        
         Scene scene = new Scene(root);
 
         stage.setTitle("Hodnocení káv");
