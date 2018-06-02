@@ -19,7 +19,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox id="mainVbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ToolBar id="toolbar" prefHeight="40.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -125,7 +124,7 @@
                            <children>
                               <ImageView id="coffeeImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../semestralkava/img/coffee4.jpg" />
+                                    <Image url="@../../../../../AppData/Local/Temp/Rar$DRa13468.35599/Semestrlka_kava-master/Semestralkava/src/semestralkava/img/coffee4.jpg" />
                                  </image>
                               </ImageView>
                               <TextArea id="popisArea" editable="false" text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. In rutrum. Proin in tellus sit amet nibh dignissim sagittis. Etiam quis quam. Nullam rhoncus aliquam metus. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. In rutrum. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Mauris elementum mauris vitae tortor.Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Mauris metus. Fusce consectetuer risus a nunc. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Etiam commodo dui eget wisi. Aliquam ornare wisi eu metus. Donec iaculis gravida nulla. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Integer malesuada. Phasellus faucibus molestie nisl. Duis pulvinar. Donec vitae arcu. Vivamus ac leo pretium faucibus. Donec vitae arcu. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor." wrapText="true" HBox.hgrow="ALWAYS" />

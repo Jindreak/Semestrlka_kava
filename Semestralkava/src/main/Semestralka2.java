@@ -5,10 +5,11 @@
  */
 package main;
 
+import GUI.mainWindow;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -17,14 +18,20 @@ import javafx.stage.Stage;
  */
 public class Semestralka2 extends Application {
     
+    private VBox root;
+    
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLDocument.fxml"));
         
+        root = new mainWindow();
+                
         Scene scene = new Scene(root);
         
+        stage.setTitle("Hodnocení káv");
         stage.setScene(scene);
         stage.show();
+        
+        
     }
 
     /**
