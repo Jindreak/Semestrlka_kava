@@ -24,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import util.SeznamKav;
 import util.SeznamKavaren;
 
 /**
@@ -122,8 +123,9 @@ public class MainWindowController implements Initializable {
     
     public void init(SeznamKavaren kavarny){
         buttonNewShopInit(kavarny);
+        buttonNewCoffeeInit();
     }
-
+    
     private void buttonNewShopInit(SeznamKavaren kavarny) {
         buttonNewShop.setOnAction((ActionEvent e) -> {
             Stage stage = new Stage();
@@ -153,6 +155,39 @@ public class MainWindowController implements Initializable {
                 Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+    }
+    
+    private void buttonNewCoffeeInit(){
+        
+         buttonNewCoffee.setOnAction((ActionEvent e) -> {
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/dialogNewCoffee.fxml"));
+
+            Parent root;
+            try {
+                root = loader.load();
+                
+                DialogNewCoffeeController controller = loader.getController();
+                if (stage == null) {
+                    System.out.println("FUCK");
+                }
+                if (controller == null) {
+                    System.out.println("SHIT");
+                }
+                controller.init(stage); 
+                
+                Scene scene = new Scene(root);
+                stage.setTitle("Založ novou kávu");
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (IOException ex) {
+                Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
     }
 
 }
