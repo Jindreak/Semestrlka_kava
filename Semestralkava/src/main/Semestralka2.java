@@ -5,9 +5,10 @@
  */
 package main;
 
-import GUI.mainWindow;
+import GUI.MainWindowController;
 import javafx.application.Application;
-import javafx.geometry.Pos;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -17,21 +18,30 @@ import javafx.stage.Stage;
  * @author Jindra
  */
 public class Semestralka2 extends Application {
-    
-    private VBox root;
-    
+
+
     @Override
     public void start(Stage stage) throws Exception {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation((getClass().getResource("/GUI/mainWindow.fxml")));
+        Parent root = loader.load();
+
+        MainWindowController mainController = loader.getController();
         
-        root = new mainWindow();
-                
+        mainController.something("delate si ze me prdel");
+
         Scene scene = new Scene(root);
-        
+
         stage.setTitle("Hodnocení káv");
         stage.setScene(scene);
         stage.show();
-        
-        
+        if (mainController == null) {
+            System.out.println("FUCK THIS SHIT.");
+        }
+        //mainController.initialize(null, null);
+       // mainController.nahrajKafe();
+
     }
 
     /**
@@ -40,5 +50,5 @@ public class Semestralka2 extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
