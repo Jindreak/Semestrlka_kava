@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package semestralkava;
+package util;
 
 /**
  *
  * @author Jindra
  */
-public class Kavarna {
+public class SeznamKavaren {
     
 }

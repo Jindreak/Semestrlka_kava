@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package semestralkava;
+package GUI;
 
+import util.SeznamKav;
+import util.Kava;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
