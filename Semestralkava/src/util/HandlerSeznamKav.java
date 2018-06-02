@@ -9,10 +9,8 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-import javafx.util.Callback;
 
 /**
  *
@@ -36,12 +34,9 @@ public class HandlerSeznamKav {
 
     private void init() {       
 
-        seznam.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                String clickedRow = seznam.getSelectionModel().getSelectedItem();
-                detail.showDetail(clickedRow);
-            }
+        seznam.setOnMouseClicked((MouseEvent event) -> {
+            String clickedRow = seznam.getSelectionModel().getSelectedItem();
+            detail.showDetail(clickedRow);
         });
 
         loadData();

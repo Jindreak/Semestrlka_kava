@@ -5,16 +5,25 @@
  */
 package GUI;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -101,13 +110,29 @@ public class MainWindowController implements Initializable {
     public TableColumn<?, ?> getCollRating() {
         return collRating;
     }
-    
+
     /**
      * Initializes the controller class.
-     */    
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        buttonNewShop.setOnAction((ActionEvent e) -> {
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/dialogNewShop.fxml"));
+            Parent root;
+            try {
+                root = loader.load();
+                Scene scene = new Scene(root);
+                
+                stage.setTitle("Založ novou kávu");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
+
 }

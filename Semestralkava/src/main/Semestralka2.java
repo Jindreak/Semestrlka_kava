@@ -10,7 +10,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import util.HandlerKavaDetail;
 import util.HandlerSeznamKav;
@@ -26,7 +25,7 @@ public class Semestralka2 extends Application {
     public void start(Stage stage) throws Exception {
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation((getClass().getResource("/GUI/mainWindow.fxml")));
+        loader.setLocation(getClass().getResource("/GUI/mainWindow.fxml"));
         Parent root = loader.load();
 
         MainWindowController mainController = loader.getController();
@@ -41,9 +40,7 @@ public class Semestralka2 extends Application {
         stage.setTitle("Hodnocení káv");
         stage.setScene(scene);
         stage.show();
-        if (mainController == null) {
-            System.out.println("FUCK THIS SHIT.");
-        }
+        
         //mainController.initialize(null, null);
        // mainController.nahrajKafe();
 

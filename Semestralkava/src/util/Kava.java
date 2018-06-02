@@ -93,7 +93,7 @@ public class Kava {
      * @return false pokud pridani selhalo
      */
     public boolean pridejHodnoceni(Hodnoceni nove) {
-        return (this.hodnoceni.add(nove));
+        return this.hodnoceni.add(nove);
     }
 
     /**

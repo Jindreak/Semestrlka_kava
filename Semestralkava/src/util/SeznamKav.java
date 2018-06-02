@@ -21,7 +21,7 @@ public class SeznamKav {
     }
 
     public boolean pridejKavu(Kava nova) {
-        return (seznam.add(nova));
+        return seznam.add(nova);
     }
     
     public Kava odeberKavu(int ident){

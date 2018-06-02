@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox fx:id="mainBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="5.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DialogNewShopController">
+   <children>
+      <Label text="Nová kavárna">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <GridPane fx:id="formGrid" VBox.vgrow="NEVER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="labelName" text="Jméno kavárny">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelName1" text="Adresa" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nameField" promptText="Vyplňte jméno kavárny" GridPane.columnIndex="1" />
+            <Label fx:id="labelUlice" text="Ulice" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelCisloPopisne" text="Číslo popisné" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelMesto" text="Město" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelPSC" text="PSČ" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="uliceField" promptText="Vyplňte ulici" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="cisloPopisneField" promptText="Vyplňte číslo popisné" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="mestoField" promptText="Vyplňte město" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="pscField" promptText="Vyplňte PSČ" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         </children>
+         <padding>
+            <Insets left="15.0" right="15.0" />
+         </padding>
+      </GridPane>
+      <Label text="Všechna pole jsou povinná, zkontrolujte si jejich vyplnění před odesláním formuláře." />
+      <HBox fx:id="buttonBox" alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button fx:id="okButton" mnemonicParsing="false" text="Vložit">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="cancelButton" cancelButton="true" mnemonicParsing="false" text="Zrušit">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" right="10.0" />
+         </padding>
+      </HBox>
+   </children>
+   <padding>
+      <Insets top="10.0" />
+   </padding>
+</VBox>
