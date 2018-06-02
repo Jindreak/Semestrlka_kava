@@ -33,6 +33,15 @@ public class Kavarna {
         this.adresa = new Adresa(ulice, cisloPopisne, mesto, PSC);
         
     }
+    
+    public Kavarna (String nazev, String ulice, int cisloPopisne, String mesto, int PSC){
+        
+        this.nazev = nazev;
+        this.id = id;
+        this.adresa = new Adresa(ulice, cisloPopisne, mesto, PSC);
+        
+    }
+    
     /**
      * Prevadi Kavarnu do plain textu
      * @return Stringova podoba kavarny

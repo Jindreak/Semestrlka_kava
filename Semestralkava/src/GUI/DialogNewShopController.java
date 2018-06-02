@@ -21,6 +21,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import util.SeznamKavaren;
 
 /**
  * FXML Controller class
@@ -31,6 +32,7 @@ public class DialogNewShopController implements Initializable {
 
     Stage stage;
     List<TextField> fields;
+    SeznamKavaren kavarny;
 
     @FXML
     private VBox mainBox;
@@ -137,7 +139,10 @@ public class DialogNewShopController implements Initializable {
 
     }
 
-    public void init(Stage stage) {
+    public void init(Stage stage, SeznamKavaren kavarny) {
+
+        this.kavarny = kavarny;
+
         this.stage = stage;
         cancelButton.setOnAction((ActionEvent event) -> {
             stage.close();
@@ -169,8 +174,46 @@ public class DialogNewShopController implements Initializable {
             }
         }
     }
-    
-    public void createRecord(){
-        
+
+    public void createRecord() {
+
+        int psc;
+        int cisloPopisne;
+        try {
+            cisloPopisne = Integer.parseInt(cisloPopisneField.getText().replaceAll("\\s+", ""));
+            try {
+                psc = Integer.parseInt(pscField.getText().replaceAll("\\s+", ""));
+                if (!kavarny.zalozKavarnu(nameField.getText(), uliceField.getText(), cisloPopisne, mestoField.getText(), psc)) {
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Chyba");
+                    alert.setHeaderText("Nepodařilo se založit kavárnu.");
+                    alert.setContentText("Z nějakého důvodu se nepodařilo založit kavárnu.");
+                    alert.showAndWait();
+                    pscField.requestFocus();
+                } else {
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Informace");
+                    alert.setHeaderText("Založení kavárny proběhlo v pořádku.");
+                    alert.setContentText("Kavárna " + nameField.getText() + " byla vložena do systému.");
+                    alert.showAndWait();
+                    stage.close();
+                }
+            } catch (NumberFormatException e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Chyba");
+                alert.setHeaderText("Špatná hodnota");
+                alert.setContentText("PSČ může obsahovat pouze čísla.");
+                alert.showAndWait();
+                pscField.requestFocus();
+            }
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Chyba");
+            alert.setHeaderText("Špatná hodnota");
+            alert.setContentText("Číslo popisné může obsahovat pouze čísla.");
+            alert.showAndWait();
+            cisloPopisneField.requestFocus();
+        }
+
     }
 }

@@ -24,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import util.SeznamKavaren;
 
 /**
  * FXML Controller class
@@ -119,11 +120,11 @@ public class MainWindowController implements Initializable {
         
     }
     
-    public void init(){
-        buttonNewShopInit();
+    public void init(SeznamKavaren kavarny){
+        buttonNewShopInit(kavarny);
     }
 
-    private void buttonNewShopInit() {
+    private void buttonNewShopInit(SeznamKavaren kavarny) {
         buttonNewShop.setOnAction((ActionEvent e) -> {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -141,7 +142,7 @@ public class MainWindowController implements Initializable {
                 if (controller == null) {
                     System.out.println("SHIT");
                 }
-                controller.init(stage);
+                controller.init(stage,kavarny);
                 
                 Scene scene = new Scene(root);
                 stage.setTitle("Založ novou kávu");

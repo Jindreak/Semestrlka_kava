@@ -30,7 +30,7 @@ public class Semestralka2 extends Application {
         fakeClass fakeClass = new fakeClass();
 
         MainWindowController mainController = loader.getController();
-        mainController.init();
+        mainController.init(fakeClass.getSeznamKavaren());
 
         HandlerKavaDetail handlerDetail = new HandlerKavaDetail(mainController, fakeClass.getSeznamKav().getSeznam());
         HandlerSeznamKav handleSeznam = new HandlerSeznamKav(fakeClass.getSeznamKav().getSeznam(), mainController.getListKavy(), handlerDetail);

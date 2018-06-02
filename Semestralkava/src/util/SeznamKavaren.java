@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class SeznamKavaren {
     
     private ArrayList<Kavarna> kavarny = new ArrayList<>();
+    private int lastIdent = 1;
 
     public ArrayList<Kavarna> getKavarny() {
         
@@ -21,9 +22,22 @@ public class SeznamKavaren {
         
     }
     
+    
+    public boolean zalozKavarnu(String nazev, String ulice, int cisloPopisne, String mesto, int psc){        
+        Kavarna kavarna = new Kavarna(nazev, ulice, cisloPopisne, mesto, psc);
+        kavarna.setId(lastIdent);
+        return pridejKavarnu(kavarna);
+    }
+    
+    
     public boolean pridejKavarnu (Kavarna kav){
         
-        return kavarny.add(kav);
+        if(kavarny.add(kav)){
+            lastIdent++;
+            return true;
+        }else{
+            return false;
+        }
         
     }
     
