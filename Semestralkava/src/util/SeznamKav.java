@@ -41,8 +41,9 @@ public class SeznamKav {
         kava.addKavarnu(kavarna);
         kava.setID(lastIdent);
         pridejKavu(kava);
-        kavy.aktualizuj();
+        kavy.aktualizuj();//TODO IDEALNE NAHRADIT ZA OBSERVERA
         System.out.print(kava.toString());
+        //TODO INSERT 1. KAVA 2. VAZBA KAVARNA-KAVA
     }
     
     public Kava odeberKavu(int ident){

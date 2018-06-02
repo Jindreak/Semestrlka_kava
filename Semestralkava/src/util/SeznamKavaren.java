@@ -26,7 +26,13 @@ public class SeznamKavaren {
     public boolean zalozKavarnu(String nazev, String ulice, int cisloPopisne, String mesto, int psc){        
         Kavarna kavarna = new Kavarna(nazev, ulice, cisloPopisne, mesto, psc);
         kavarna.setId(lastIdent);
-        return pridejKavarnu(kavarna);
+        if(pridejKavarnu(kavarna)){
+            //TODO INSERT KAVARNA DO DB.
+            return true;
+        }else{
+            return false;
+        }
+        
     }
     
     
