@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import util.DatabaseCon;
 import util.HandlerKavaDetail;
 import util.HandlerSeznamKav;
 
@@ -29,14 +30,17 @@ public class Semestralka2 extends Application {
 
         fakeClass fakeClass = new fakeClass();
         
+        
+        DatabaseCon.init();
+        
         MainWindowController mainController = loader.getController();
 
-        HandlerKavaDetail handlerDetail = new HandlerKavaDetail(mainController, fakeClass.getSeznamKav().getSeznam());
-        HandlerSeznamKav handleSeznam = new HandlerSeznamKav(fakeClass.getSeznamKav().getSeznam(), mainController.getListKavy(), handlerDetail);
+        HandlerKavaDetail handlerDetail = new HandlerKavaDetail(mainController, DatabaseCon.getKavy().getSeznam());
+        HandlerSeznamKav handleSeznam = new HandlerSeznamKav(DatabaseCon.getKavy().getSeznam(), mainController.getListKavy(), handlerDetail);
         
-        fakeClass.getSeznamKav().setSeznamKavy(handleSeznam);
+        DatabaseCon.getKavy().setSeznamKavy(handleSeznam);
         
-        mainController.init(fakeClass.getSeznamKavaren(),handlerDetail, fakeClass.getSeznamKav());
+        mainController.init(DatabaseCon.getKavarny(),handlerDetail, DatabaseCon.getKavy());
         
         Scene scene = new Scene(root);
 

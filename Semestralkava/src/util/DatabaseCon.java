@@ -12,7 +12,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  *
@@ -20,7 +23,10 @@ import java.util.Arrays;
  */
 public class DatabaseCon {
     
-    private Connection connect() {
+    private static SeznamKavaren seznamKavaren;
+    private static SeznamKav seznamKav;
+    
+    private static Connection connect() {
         // SQLite connection string
         String url = "jdbc:sqlite:src\\semestralkava\\db\\kava.db";
         Connection conn = null;
@@ -32,11 +38,13 @@ public class DatabaseCon {
         return conn;
     }
     
-    public SeznamKav nactiKavy(){
+    private static SeznamKav nactiKavy(){
         String sql =    "SELECT id, Nazev, Popis, Zeme_puvodu FROM Kava" ;
-        SeznamKav seznamKav = new SeznamKav();            
+        seznamKav = new SeznamKav();
         
-        try (Connection conn = this.connect();
+        //-------Nacteni zakladni listu kav
+        
+        try (Connection conn = DatabaseCon.connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
             
@@ -55,14 +63,132 @@ public class DatabaseCon {
             System.out.println(e.getMessage());
         }
         
+        //-----Prirazeni kave kavarny
+        
+        sql = "SELECT kavy_id, kavarny_id FROM kavy_kavarny";
+        
+        try (Connection conn = DatabaseCon.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            
+            Kava kava = null;
+            Kavarna kavarna = null;
+            
+            
+            
+            while (rs.next()) {
+                
+                
+                int idKavy = rs.getInt("kavy_id");
+                int idKavarny = rs.getInt("kavarny_id");
+
+                
+                Iterator<Kava> it = seznamKav.getSeznam().iterator();
+                Iterator<Kavarna> it2 = seznamKavaren.getKavarny().iterator();
+                
+                
+                
+                while(it.hasNext()){
+                    
+                    kava = it.next();
+                    if (kava.getId() == idKavy){
+                        break;
+                    }
+                    
+                }
+                
+                
+                
+                while(it2.hasNext()){
+                    
+                    kavarna = it2.next();
+
+                    if (kavarna.getId() == idKavarny){
+                        kava.addKavarnu(kavarna);
+                        
+                    }
+                    
+                }
+         
+                
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        
+        //-----Prirazeni kave hodnoceni
+        
+        sql = "SELECT kava_id, hodnoceni_id FROM Hodnoceni_kavy";
+        String sql2 = "SELECT id, Datum, Pocet FROM Hodnoceni";
+        
+        try (Connection conn = DatabaseCon.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql);
+             Statement stmt2  = conn.createStatement();  
+             ResultSet rs2   = stmt2.executeQuery(sql2)  ){
+            
+            
+            Kava kava = null;
+            Kavarna kavarna = null;
+            
+            
+            
+            while (rs.next()) {
+                
+                
+                int idKavy = rs.getInt("kava_id");
+                int idHodnoceni = rs.getInt("hodnoceni_id");
+
+                
+                Iterator<Kava> it = seznamKav.getSeznam().iterator();
+             
+                
+                while(it.hasNext()){
+                    
+                    kava = it.next();
+                    if (kava.getId() == idKavy){
+                        break;
+                    }
+                    
+                }
+                
+                
+                
+                while(rs2.next()){
+                    
+                    
+                    
+                    if( rs2.getInt("id") == idHodnoceni){
+                        
+                        Hodnoceni hodnoceni = new Hodnoceni(rs2.getInt("Pocet"));
+                        hodnoceni.setDatum(rs2.getString("Datum"));
+                        kava.addHodnoceni(hodnoceni);
+                        
+                    }
+                    
+                    
+                }
+                
+                
+                
+                
+         
+                
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
         return seznamKav;
     }
     
-    public SeznamKavaren nactiKavarny(){
+    private static SeznamKavaren nactiKavarny(){
         String sql =    "SELECT id, Nazev, Adresa FROM Kavarna" ;
-        SeznamKavaren seznamKavaren = new SeznamKavaren();            
+        seznamKavaren = new SeznamKavaren();            
         
-        try (Connection conn = this.connect();
+        try (Connection conn = DatabaseCon.connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
             
@@ -96,7 +222,7 @@ public class DatabaseCon {
                         "INNER JOIN Kava ON kava_id = Kava.id;";
                     
         
-        try (Connection conn = this.connect();
+        try (Connection conn = DatabaseCon.connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
             
@@ -112,10 +238,21 @@ public class DatabaseCon {
         }
     }
     
-    public DatabaseCon (){
+    private DatabaseCon (){}
+    
+    public static void init(){
+        
+        seznamKavaren = nactiKavarny();
+        seznamKav = nactiKavy();
         
     }
     
+    public static SeznamKavaren getKavarny(){
+        return seznamKavaren;
+    }
     
+    public static SeznamKav getKavy(){
+        return seznamKav;
+    }
     
 }
