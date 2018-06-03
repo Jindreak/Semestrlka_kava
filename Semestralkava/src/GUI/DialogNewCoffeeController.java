@@ -28,7 +28,7 @@ import util.SeznamKav;
 import util.SeznamKavaren;
 
 /**
- *
+ *  Controller pro dalsi dialogove okno
  * @author Jindra
  */
 public class DialogNewCoffeeController implements Initializable {
@@ -62,11 +62,23 @@ public class DialogNewCoffeeController implements Initializable {
     private Label labelZemePuvodu1;
     @FXML
     private ChoiceBox<?> seznamKavaren;
-
+    
+    /**
+     * Vygenerovana inicializacni metoda - fuj
+     * @param location cesta URL
+     * @param resources netusim
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+    
+    /**
+     * Nas lepsi init
+     * @param stage stage pro okno
+     * @param seznam podavany seznam kavaren
+     * @param kavy podavany seznam kavy
+     */
 
     public void init(Stage stage, SeznamKavaren seznam, SeznamKav kavy) {
         this.stage = stage;
@@ -88,11 +100,21 @@ public class DialogNewCoffeeController implements Initializable {
 
     }
 
+    /**
+     * Inicializuje seznam kavaren
+     * @param kavarny seznam kavaren
+     */
     private void initSeznamKavaren(List kavarny) {
         ObservableList data = FXCollections.observableArrayList(kavarny);
         seznamKavaren.setItems(data);
     }
-
+    
+    
+    /**
+     * Kontroluje zadana textova pole
+     * @param kavarna podavana kavarna
+     * @return true jestli se povedlo
+     */
     private boolean checkValues(Kavarna kavarna) {
         
         
@@ -107,7 +129,10 @@ public class DialogNewCoffeeController implements Initializable {
             }
         }       return true;
     }
-
+    /**
+     * Vytvareni zaznamu do seznamu kav
+     * @param seznam podavany seznam kav
+     */
     private void createRecord(SeznamKav seznam) {
         Kavarna kavarna = (Kavarna) seznamKavaren.getSelectionModel().getSelectedItem();
         

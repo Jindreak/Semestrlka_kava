@@ -53,12 +53,18 @@ public class DialogNewShopController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url ceste k souboru
+     * @param  rb ...
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
     }
-
+    /**
+     * Nas lepsi init
+     * @param stage Stage pro okno
+     * @param kavarny podavany seznam kavaren
+     */
     public void init(Stage stage, SeznamKavaren kavarny) {
 
         this.kavarny = kavarny;
@@ -81,7 +87,10 @@ public class DialogNewShopController implements Initializable {
         fields.add(mestoField);
         fields.add(cisloPopisneField);
     }
-
+    
+    /**
+     * Kontrola textovych fieldu
+     */
     public void checkValues() {
         for (TextField field : fields) {
             if (field.getText().isEmpty()) {
@@ -94,7 +103,10 @@ public class DialogNewShopController implements Initializable {
             }
         }
     }
-
+    
+    /**
+     * Zapisovani zaznamu
+     */
     public void createRecord() {
 
         int psc;

@@ -63,54 +63,94 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<?, ?> collRating;
 
+    /**
+     * geter na prvek
+     * @return 
+     */
     public Button getButtonNewShop() {
         return buttonNewShop;
     }
-
+    /**
+     * geter na prvek
+     * @return 
+     */
     public Button getButtonNewCoffee() {
         return buttonNewCoffee;
     }
-
+    /**
+     * geter na prvek
+     * @return 
+     */
     public Button getButtonRemoveCoffee() {
         return buttonRemoveCoffee;
     }
-
+    /**
+     * geter na prvek
+     * @return 
+     */
     public Button getButtonRating() {
         return buttonRating;
     }
-
+    /**
+     * geter na prvek
+     * @return 
+     */
     public ListView<?> getListKavy() {
         return listKavy;
     }
-
+    /**
+     * geter na prvek
+     * @return 
+     */
     public Label getLabelCoffeeName() {
         return labelCoffeeName;
     }
-
+    /**
+     * geter na prvek
+     * @return 
+     */
     public Label getLabelCountryOrigin() {
         return labelCountryOrigin;
     }
-
+    /**
+     * geter na prvek
+     * @return 
+     */
     public Label getLabelAvgRating() {
         return labelAvgRating;
     }
-
+    /**
+     * geter na prvek
+     * @return 
+     */
     public TextArea getPopisTextArea() {
         return popisTextArea;
     }
-
+    /**
+     * geter na prvek
+     * @return 
+     */
     public ListView<?> getListAvailableIn() {
         return listAvailableIn;
     }
-
+    /**
+     * geter na prvek
+     * @return 
+     */
     public TableView<?> getTableRatings() {
         return tableRatings;
     }
-
+    /**
+     * geter na prvek
+     * @return 
+     */
     public TableColumn<?, ?> getCollDate() {
         return collDate;
     }
-
+    /**
+     * geter na prvek
+     * @return 
+     */
     public TableColumn<?, ?> getCollRating() {
         return collRating;
     }
@@ -122,13 +162,19 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
     }
-
+    /**
+     * inicializacni metoda, vola podstatne metody
+     * @param kavarny podavany seznam kav
+     * @param detail handler pro detail
+     * @param kavy podavany seznam kav
+     */
     public void init(SeznamKavaren kavarny, HandlerKavaDetail detail, SeznamKav kavy) {
         buttonNewShopInit(kavarny);
         buttonNewCoffeeInit(kavarny, kavy);
         buttonRatingInit(detail);
     }
 
+    
     private void buttonRatingInit(HandlerKavaDetail detail) {
 
         buttonRating.setOnAction((ActionEvent e) -> {
