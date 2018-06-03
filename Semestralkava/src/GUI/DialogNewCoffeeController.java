@@ -76,7 +76,7 @@ public class DialogNewCoffeeController implements Initializable {
         });
 
         okButton.setOnAction((ActionEvent event) -> {
-            checkValues();
+            //checkValues();
             createRecord(kavy);
             stage.close();
         });
@@ -93,22 +93,27 @@ public class DialogNewCoffeeController implements Initializable {
         seznamKavaren.setItems(data);
     }
 
-    private void checkValues() {
+    private boolean checkValues(Kavarna kavarna) {
+        
+        
         for (TextField field : fields) {
-            if (field.getText().isEmpty()) {
+            if (field.getText().isEmpty() || kavarna == null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Chyba");
                 alert.setHeaderText("Záznam nelze uložit.");
                 alert.setContentText("Nevyplnili jste všechna pole.");
                 alert.showAndWait();
-                break;
+                return false;
             }
-        }
+        }       return true;
     }
 
     private void createRecord(SeznamKav seznam) {
         Kavarna kavarna = (Kavarna) seznamKavaren.getSelectionModel().getSelectedItem();
+        
+        if (checkValues(kavarna)){
         seznam.createCoffee(nameField.getText(), popisField.getText(), zemePuvoduField.getText(), kavarna);
+        }
     }
 
 }
