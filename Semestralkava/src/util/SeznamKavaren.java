@@ -27,7 +27,7 @@ public class SeznamKavaren {
         Kavarna kavarna = new Kavarna(nazev, ulice, cisloPopisne, mesto, psc);
         kavarna.setId(lastIdent);
         if(pridejKavarnu(kavarna)){
-            //TODO INSERT KAVARNA DO DB.
+            DatabaseCon.vlozKavarnu(lastIdent, nazev, ulice, cisloPopisne, mesto, psc);
             return true;
         }else{
             return false;

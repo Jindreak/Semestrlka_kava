@@ -280,4 +280,65 @@ public class DatabaseCon {
         return seznamKav;
     }
     
+    public static void vlozKavarnu (int id, String nazev, String ulice, int cisloPopisne, String mesto, int psc){
+        
+        String sql = "INSERT INTO Kavarna (id, Nazev, Adresa) VALUES(?,?,?)";
+        String adresa = ulice + " " + cisloPopisne + " " + mesto + " " + psc;
+        
+        
+        try (Connection conn = DatabaseCon.connect();
+              PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, id);
+            pstmt.setString(2, nazev);
+            pstmt.setString(3, adresa);
+            pstmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    
+    public static void vlozKavu (Kava kava, Kavarna kavarna){
+        
+        String sql = "INSERT INTO Kava (id, Nazev, Popis, Zeme_puvodu) VALUES(?,?,?,?)";
+        
+        
+        
+        try (Connection conn = DatabaseCon.connect();
+              PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, kava.getId());
+            pstmt.setString(2, kava.getNazev());
+            pstmt.setString(3, kava.getPopis());
+            pstmt.setString(4, kava.getZemePuvodu());
+            pstmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        
+        sql = "INSERT INTO kavy_kavarny (kavy_id, kavarny_id) VALUES(?,?)";
+        
+        try (Connection conn = DatabaseCon.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, kava.getId());
+            pstmt.setInt(2, kavarna.getId());
+            pstmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        
+    
+        
+    }
+        
+        
+    
+    
 }

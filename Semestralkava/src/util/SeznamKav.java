@@ -43,7 +43,7 @@ public class SeznamKav {
         pridejKavu(kava);
         kavy.aktualizuj();//TODO IDEALNE NAHRADIT ZA OBSERVERA
         System.out.print(kava.toString());
-        //TODO INSERT 1. KAVA 2. VAZBA KAVARNA-KAVA
+        DatabaseCon.vlozKavu(kava, kavarna);
     }
     
     public Kava odeberKavu(int ident){
