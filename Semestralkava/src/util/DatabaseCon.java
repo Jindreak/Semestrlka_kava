@@ -14,8 +14,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -25,6 +27,7 @@ public class DatabaseCon {
     
     private static SeznamKavaren seznamKavaren;
     private static SeznamKav seznamKav;
+    private static Map<Integer, Hodnoceni> hodnoceni;
     
     private static Connection connect() {
         // SQLite connection string
@@ -125,9 +128,7 @@ public class DatabaseCon {
         
         try (Connection conn = DatabaseCon.connect();
              Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql);
-             Statement stmt2  = conn.createStatement();  
-             ResultSet rs2   = stmt2.executeQuery(sql2)  ){
+             ResultSet rs    = stmt.executeQuery(sql)){
             
             
             Kava kava = null;
@@ -154,24 +155,11 @@ public class DatabaseCon {
                     
                 }
                 
+                          
                 
+                Hodnoceni h = hodnoceni.get(idHodnoceni);
                 
-                while(rs2.next()){
-                    
-                    
-                    
-                    if( rs2.getInt("id") == idHodnoceni){
-                        
-                        Hodnoceni hodnoceni = new Hodnoceni(rs2.getInt("Pocet"));
-                        hodnoceni.setDatum(rs2.getString("Datum"));
-                        kava.addHodnoceni(hodnoceni);
-                        
-                    }
-                    
-                    
-                }
-                
-                
+                kava.addHodnoceni(h);
                 
                 
          
@@ -215,6 +203,40 @@ public class DatabaseCon {
         return seznamKavaren;
     }
     
+    private static Map<Integer, Hodnoceni> nactiHodnoceni(){
+        
+        Map<Integer, Hodnoceni> map1 = new HashMap<Integer, Hodnoceni>();
+        
+        String sql =    "SELECT id, Datum, Pocet FROM Hodnoceni" ;
+
+        
+        //-------Nacteni zakladni listu kav
+        
+        try (Connection conn = DatabaseCon.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            
+            while (rs.next()) {
+                
+                Hodnoceni hodnoceni = new Hodnoceni(rs.getInt("Pocet"),
+                                                    rs.getString("Datum"));
+                
+                map1.put(rs.getInt("id"), hodnoceni);
+                
+            }
+       
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+ 
+        
+        return map1;
+        
+    }
+    
     public void vypisHodnoceni(){
         String sql =    "SELECT Nazev, Popis, Zeme_puvodu, Pocet, Datum\n" +
                         "FROM Hodnoceni_kavy\n" +
@@ -243,7 +265,10 @@ public class DatabaseCon {
     public static void init(){
         
         seznamKavaren = nactiKavarny();
+        hodnoceni = nactiHodnoceni();
         seznamKav = nactiKavy();
+        
+        
         
     }
     

@@ -19,6 +19,11 @@ public class Hodnoceni {
         this.datum = null;
     }
     
+    public Hodnoceni(int hodnoceni, String datum){
+        this.hodnoceni = hodnoceni;
+        this.datum = datum;
+    }
+    
     public void setDatum(String date){                
         datum = date;
     }
