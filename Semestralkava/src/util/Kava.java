@@ -127,8 +127,16 @@ public class Kava {
     }
     
     public void addHodnoceni(Hodnoceni hodnoceni){
-        //TODO INSERT PRO PRIDANI HODNOCENTI DO TABULKY HODNOCENI A VAZBY HODNOCENI - KAVA DO VAYZEBNI TABULKY
+       
         this.hodnoceni.add(hodnoceni);
+        
+        
+    }
+    
+    public void zalozHodnoceni(Hodnoceni hodnoceni){
+       
+        this.hodnoceni.add(hodnoceni);
+        DatabaseCon.vlozHodnoceni(this, hodnoceni);
     }
     
     public float getHodnoceniAvg(){

@@ -39,10 +39,6 @@ public class CoffeeRatingController implements Initializable {
     @FXML
     private Button buttonConfirm;
     @FXML
-    private Label labelHodnocení;
-    @FXML
-    private Label hodnoceniCount1;
-    @FXML
     private TextField textFieldDatum;
 
     /**
@@ -87,7 +83,7 @@ public class CoffeeRatingController implements Initializable {
     private void writeHodnoceni(HandlerKavaDetail detail) {
         Hodnoceni hodnoceni = new Hodnoceni(Integer.valueOf(hodnoceniCount.getText()));
         hodnoceni.setDatum(textFieldDatum.getText());
-        detail.getCurrentDetail().addHodnoceni(hodnoceni);
+        detail.getCurrentDetail().zalozHodnoceni(hodnoceni);
         detail.showDetail(detail.getCurrentDetail().getNazev());
     }
 

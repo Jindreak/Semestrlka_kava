@@ -210,8 +210,6 @@ public class DatabaseCon {
         String sql =    "SELECT id, Datum, Pocet FROM Hodnoceni" ;
 
         
-        //-------Nacteni zakladni listu kav
-        
         try (Connection conn = DatabaseCon.connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
@@ -234,6 +232,30 @@ public class DatabaseCon {
  
         
         return map1;
+        
+    }
+    
+    private static int posledniIndexHodnoceni(){
+        
+        String sql =    "SELECT id FROM Hodnoceni" ;
+        int index = -1;
+        
+        try (Connection conn = DatabaseCon.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+
+            while (rs.next()) {
+         
+                index = rs.getInt("id");                                   
+  
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return index;
         
     }
     
@@ -267,7 +289,6 @@ public class DatabaseCon {
         seznamKavaren = nactiKavarny();
         hodnoceni = nactiHodnoceni();
         seznamKav = nactiKavy();
-        
         
         
     }
@@ -335,6 +356,40 @@ public class DatabaseCon {
         
         
     
+        
+    }
+    
+    public static void vlozHodnoceni (Kava kava, Hodnoceni hodnoceni){
+        
+        String sql = "INSERT INTO Hodnoceni (Datum, Pocet) VALUES(?,?)";
+        int indexHodnoceni = -1;
+        
+        try (Connection conn = DatabaseCon.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setString(1, hodnoceni.getDatum());
+            pstmt.setInt(2, hodnoceni.getHodnoceni());
+            pstmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        indexHodnoceni = posledniIndexHodnoceni();
+        
+        sql = "INSERT INTO Hodnoceni_kavy (kava_id, hodnoceni_id) VALUES(?,?)";
+        
+        try (Connection conn = DatabaseCon.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, kava.getId());
+            pstmt.setInt(2, indexHodnoceni);
+            pstmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
         
     }
         
