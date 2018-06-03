@@ -62,9 +62,17 @@ public class CoffeeRatingController implements Initializable {
     private void initButtonConfirm(HandlerKavaDetail detail, Stage stage) {
         buttonConfirm.setOnAction((ActionEvent e) -> {
             if (detail.getCurrentDetail() != null) {
-                checkDateFormat();
-                writeHodnoceni(detail);
-                stage.close();
+                if (checkDateFormat()) {
+                    writeHodnoceni(detail);
+                    stage.close();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Chyba");
+                    alert.setHeaderText("Záznam nelze uložit.");
+                    alert.setContentText("Datum vyplňujte ve formátu dd.mm.yyy.\n Např. 7.6.1995");
+                    alert.showAndWait();
+                    textFieldDatum.requestFocus();
+                }
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Chyba");
@@ -97,17 +105,14 @@ public class CoffeeRatingController implements Initializable {
         });
     }
 
-    public void checkDateFormat() {
+    public boolean checkDateFormat() {
 
         Pattern p = Pattern.compile("^\\d\\d?\\.(0?[0-9]|1[012])\\.\\d{4}$");
         Matcher m = p.matcher(textFieldDatum.getText());
         if (textFieldDatum.getText().isEmpty() || !m.find()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Chyba");
-            alert.setHeaderText("Záznam nelze uložit.");
-            alert.setContentText("Datum vyplňujte ve formátu dd.mm.yyy.\n Např. 7.6.1995");
-            alert.showAndWait();
+            return false;
         }
+        return true;
     }
 
 }
